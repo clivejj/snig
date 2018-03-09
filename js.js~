@@ -6,8 +6,6 @@ var elements = [];
 var requestId;
 
 var newCircle = function(){
-    clearInterval(requestId);
-    requestId = setInterval(animateDvd, 17);
     var circle = document.createElementNS(NS, "circle");
     circle.setAttribute("cx", svg.getAttribute("width")/2);
     circle.setAttribute("cy", svg.getAttribute("height")/2);
@@ -40,10 +38,11 @@ var animateDvd = function(e){
     }
 }
 
+requestId = setInterval(animateDvd, 17);
+
 var end = function(e){
     svg.innerHTML = "";
     clearInterval(requestId);
-    elements = [];
 }
 
 svg.addEventListener("click", newCircle);
